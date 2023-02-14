@@ -1,33 +1,53 @@
+import { twMerge } from 'tailwind-merge';
+
 export interface ParagraphProps {
-  value: string;
-  textSize?: "xs" | "sm" | "base" | "lg" | "xl" | "2xl";
+  title?: string;
+  body?: string;
+  textSize?: 'sm' | 'base' | 'lg' | 'xl' | '2xl';
   fontWeight?:
-    | "thin"
-    | "extralight"
-    | "light"
-    | "normal"
-    | "medium"
-    | "semibold"
-    | "bold"
-    | "extrabold"
-    | "black";
+    | 'thin'
+    | 'extralight'
+    | 'light'
+    | 'normal'
+    | 'medium'
+    | 'semibold'
+    | 'bold'
+    | 'extrabold'
+    | 'black';
+  topMargin?: number;
+  colSpan?: number;
 }
 
 export const initialProps: ParagraphProps = {
-  value: "Paragraph",
-  textSize: "base",
-  fontWeight: "normal",
+  title: 'Paragraph Title',
+  body: 'Paragraph Body',
+  textSize: 'sm',
+  fontWeight: 'normal',
+  colSpan: 1,
 };
 
-const Paragraph = ({ value, textSize, fontWeight }: ParagraphProps) => {
+const Paragraph = ({
+  title,
+  body,
+  textSize,
+  fontWeight,
+  topMargin = 10,
+  colSpan = 1,
+}: ParagraphProps) => {
   return (
-    <section aria-labelledby="information-heading" className="mt-4">
-      <div className="mt-4 space-y-6">
-        <p className={`text-${textSize} font-${fontWeight} text-gray-500`}>
-          {value}
-        </p>
-      </div>
-    </section>
+    <div
+      className={`mt-${topMargin}`}
+      style={{
+        gridColumn: `span ${colSpan}`,
+      }}
+    >
+      <h2 className='text-sm font-medium text-gray-900'>{title}</h2>
+      {/* <div className='mt-4 space-y-6'> */}
+      <p className={`prose-${textSize} font-${fontWeight} text-gray-500 mt-4`}>
+        {body}
+      </p>
+      {/* </div> */}
+    </div>
   );
 };
 

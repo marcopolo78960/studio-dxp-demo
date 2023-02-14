@@ -17,6 +17,12 @@ import ProductTable from '../components/ProductTable';
 import Reviews from '../components/Reviews';
 import VStack from '../components/VStack';
 import '../index.css';
+import SizePicker from '../components/SizePicker';
+import BigButton from '../components/BigButton';
+import Divider from '../components/Divider';
+import FeatureList from '../components/FeatureList';
+import Feature from '../components/Feature';
+import IconBadge from '../components/IconBadge';
 
 export const config: TemplateConfig = {
   stream: {
@@ -39,7 +45,7 @@ export default function Product({ document }: TemplateProps) {
           logo=' https://a.mktgcdn.com/p/R9FjcYjRNA5dAespqgHFLMvu2m18-E5Apnb3KON0oJY/300x300.png'
         />
         <CenteredContainer>
-          <GridContainer>
+          <GridContainer columns={2} paddingTop={10}>
             <VStack>
               <Headline
                 value={document.name}
@@ -50,16 +56,43 @@ export default function Product({ document }: TemplateProps) {
                 <Label value={document.c_price} />
                 <Reviews averageRating={5} reviewCount={1995} />
               </HStack>
+              <SizePicker />
+              <BigButton title='Add to cart' />
               <Paragraph
-                value={document.description}
-                fontWeight=''
-                textSize=''
+                body={document.description}
+                fontWeight='normal'
+                textSize='sm'
               />
+              <Divider />
+              <FeatureList title='Features'>
+                <Feature text='Twin Rocker' />
+                <Feature text='Full Poplar Woodcore' />
+                <Feature text='C/FX Carbon Weave' />
+                <Feature text='Cork Damplifier' />
+              </FeatureList>
+              <GridContainer columns={2} paddingTop={10}>
+                <IconBadge
+                  title='Lowest Price'
+                  subtitle='We guarantee the the lowest price'
+                  icon='tag'
+                />
+                <IconBadge
+                  title='Free Returns'
+                  subtitle='We cover shipping on returns'
+                  icon='tag'
+                />
+              </GridContainer>
             </VStack>
-            <ProductImage
-              src={document.photoGallery[0].image.url}
-              alt='Light green backpack with black canvas straps and front zipper pouch.'
-            />
+            <VStack>
+              <ProductImage
+                src={document.photoGallery[0].image.url}
+                alt='Light green backpack with black canvas straps and front zipper pouch.'
+              />
+              <HStack>
+                <ProductImage src={document.photoGallery[1].image.url} />
+                <ProductImage src={document.photoGallery[2].image.url} />
+              </HStack>
+            </VStack>
           </GridContainer>
           <ItemsGrid title='Similar Items'>
             <Item
@@ -92,6 +125,62 @@ export default function Product({ document }: TemplateProps) {
             sidewalls='ABS Sidewalls'
             bindingCompatibility='We recommend a brake width equal to or at most 15 mm wider than the ski waist width.'
           />
+          <Divider />
+          <Headline
+            value='Reviews'
+            textSize='lg'
+            fontWeight='medium'
+            leftPadding={4}
+          />
+          <Divider />
+          <VStack>
+            <GridContainer columns={4}>
+              <VStack>
+                <Paragraph title='Aaron P' topMargin={0} />
+              </VStack>
+              <Reviews leftBorder={false} />
+              <Paragraph
+                colSpan={2}
+                topMargin={0}
+                textSize='sm'
+                title='Perfect for Powder'
+                body='The best skis for deep pow!!'
+              />
+            </GridContainer>
+            <Divider />
+          </VStack>
+          <VStack>
+            <GridContainer columns={4}>
+              <VStack>
+                <Paragraph title='Luc M' topMargin={0} />
+              </VStack>
+              <Reviews leftBorder={false} />
+              <Paragraph
+                colSpan={2}
+                topMargin={0}
+                textSize='sm'
+                title='Amazing!'
+                body='Best Skis in the world!!!'
+              />
+            </GridContainer>
+            <Divider />
+          </VStack>
+          <VStack>
+            <GridContainer columns={4}>
+              <VStack>
+                <Paragraph title='Andrew S' topMargin={0} />
+              </VStack>
+              <Reviews leftBorder={false} />
+              <Paragraph
+                colSpan={2}
+                topMargin={0}
+                textSize='sm'
+                title='Ski of the Year'
+                body='This ski does all without even breathing hard. Perfectly balanced, allows you to ski in multiple styles without punishing the rider.'
+              />
+            </GridContainer>
+            <Divider />
+          </VStack>
         </CenteredContainer>
       </PageLayout>
     </>
