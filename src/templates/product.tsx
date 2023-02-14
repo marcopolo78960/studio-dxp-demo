@@ -89,8 +89,16 @@ export default function Product({ document }: TemplateProps) {
                 alt='Light green backpack with black canvas straps and front zipper pouch.'
               />
               <HStack>
-                <ProductImage src={document.photoGallery[1].image.url} />
-                <ProductImage src={document.photoGallery[2].image.url} />
+                <ProductImage
+                  src={
+                    'https://images.evo.com/imgp/700/197270/802741/salomon-qst-blank-skis-2023-.jpg'
+                  }
+                />
+                <ProductImage
+                  src={
+                    'https://images.evo.com/imgp/700/197270/965505/salomon-qst-blank-skis-2023-.jpg'
+                  }
+                />
               </HStack>
             </VStack>
           </GridContainer>
