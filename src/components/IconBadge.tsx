@@ -17,7 +17,7 @@ export default function IconBadge({ icon, title, subtitle }: IconBadgeProps) {
   return (
     <div
       key={title}
-      className='rounded-lg border border-gray-200 bg-gray-50 p-6 text-center'
+      className='rounded-lg border border-gray-200 bg-gray-50 p-6 text-center h-40'
     >
       <dt>
         {icon === 'return' ? <ReturnArrowIcon /> : <TagIcon />}

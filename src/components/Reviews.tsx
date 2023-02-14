@@ -25,7 +25,6 @@ const Reviews = ({
         leftBorder ? 'border-l' : ''
       )}
     >
-      <h2 className='sr-only'>Reviews</h2>
       <div className='flex items-center'>
         <div>
           <div className='flex items-center'>
@@ -43,7 +42,7 @@ const Reviews = ({
             ))}
           </div>
         </div>
-        {reviewCount && (
+        {(reviewCount || 0) > 0 && (
           <p className='ml-2 text-sm text-gray-500'>{reviewCount} reviews</p>
         )}
       </div>
