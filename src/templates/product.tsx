@@ -46,10 +46,11 @@ export default function Product({ document }: TemplateProps) {
           />
         </VStack>
         <ProductImage
-          src={document.photoGallery[0].image.url}
+          src={`${document.photoGallery[0].image.url}`}
           alt="Light green backpack with black canvas straps and front zipper pouch."
         />
       </GridContainer>
+      <Incentives />
       <ItemsGrid title="Similar Items">
         <Item
           name="Nordica Enforcer 100 Skis 2023"
@@ -72,7 +73,6 @@ export default function Product({ document }: TemplateProps) {
           price={699.99}
         />
       </ItemsGrid>
-      <Incentives />
       <ProductTable
         title="Product Details"
         rockerType="All Mountain Rocker – Smooth rocker at both tip and tail with camber underfoot provides balanced performance anywhere on the mountain."
