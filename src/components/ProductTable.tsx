@@ -34,7 +34,7 @@ const ProductTable = ({
   const renderRow = (rowTitle: string, value: string) => {
     return (
       // title should be a fixed width so that the value is aligned
-      <div className="border-t border-gray-400 py-2">
+      <div className="border-t border-gray-200 py-2">
         <div className="grid grid-cols-4 gap-x-4">
           <dt className="text-sm font-medium text-gray-500">{rowTitle}</dt>
           <dd className="col-span-3 text-sm text-gray-900">{value}</dd>
