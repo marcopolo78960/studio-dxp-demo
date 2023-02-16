@@ -1,5 +1,4 @@
 import { GetPath, TemplateConfig, TemplateProps } from "@yext/pages";
-import GridContainer from "../components/GridContainer";
 import "../index.css";
 
 import Headline from "../components/Headline";
@@ -30,19 +29,17 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
 export default function Product({ document }: TemplateProps) {
   return (
     <>
-      <GridContainer>
-        <VStack>
-          <Headline value={document.name} fontWeight="bold" textSize="4xl" />
-          <HStack>
-            <Label value={`$${document.c_price}`} />
-            <Reviews averageRating={5} reviewCount={1995} />
-          </HStack>
-        </VStack>
-        <ProductImage
-          src={`${document.photoGallery[0].image.url}`}
-          alt="Light green backpack with black canvas straps and front zipper pouch."
-        />
-      </GridContainer>
+      <VStack>
+        <Headline value={document.name} fontWeight="bold" textSize="4xl" />
+        <HStack>
+          <Label value={`$${document.c_price}`} />
+          <Reviews averageRating={5} reviewCount={1995} />
+        </HStack>
+      </VStack>
+      <ProductImage
+        src={`${document.photoGallery[0].image.url}`}
+        alt="Light green backpack with black canvas straps and front zipper pouch."
+      />
       <Section background={false}>
         <ProductTable
           title="Product Details"
