@@ -10,7 +10,7 @@ export const initialProps: ProductImageProps = {
 
 export default function ProductImage({ src, alt }: ProductImageProps) {
   return (
-    <div className="col-start-2 row-span-2 self-center">
+    <div className="">
       <div className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg">
         <img
           src={src}

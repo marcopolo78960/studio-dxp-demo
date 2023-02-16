@@ -7,10 +7,17 @@ import Item from "../components/Item";
 import ItemsGrid from "../components/ItemsGrid";
 import Label from "../components/Label";
 
+import Banner from "../components/Banner";
+import GridContainer from "../components/GridContainer";
+import Incentives from "../components/Incentives";
+import Paragraph from "../components/Paragraph";
 import ProductImage from "../components/ProductImage";
 import ProductTable from "../components/ProductTable";
+import RecentReviews from "../components/RecentReviews";
 import Reviews from "../components/Reviews";
 import Section from "../components/Section";
+import SkiHouseFooter from "../components/SkiHouseFooter";
+import SkiHouseNav from "../components/SkiHouseNav";
 import VStack from "../components/VStack";
 import "../index.css";
 
@@ -19,7 +26,7 @@ export const config: TemplateConfig = {
     $id: "skis",
     filter: { entityTypes: ["ce_skis"] },
     localization: { locales: ["en"], primary: false },
-    fields: ["photoGallery", "name", "c_price", "slug"],
+    fields: ["name", "description", "c_price", "photoGallery", "slug"],
   },
 };
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
@@ -29,20 +36,36 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
 export default function Product({ document }: TemplateProps) {
   return (
     <>
+      <Banner
+        text={`Free Shipping on orders over $100`}
+        backgroundColor="#dd6c3c"
+        textColor="#ffffff"
+      />
+      <SkiHouseNav />
       <Section background={false}>
-        <VStack>
-          <Headline value={document.name} fontWeight="bold" textSize="4xl" />
-          <HStack>
-            <Label value={`$${document.c_price}`} />
-            <Reviews averageRating={5} reviewCount={1995} />
-          </HStack>
-        </VStack>
-        <ProductImage
-          src={`${document.photoGallery[0].image.url}`}
-          alt="Light green backpack with black canvas straps and front zipper pouch."
-        />
+        <GridContainer columns={2}>
+          <VStack>
+            <Headline value={document.name} fontWeight="bold" textSize="4xl" />
+            <HStack>
+              <Label value={`$${document.c_price}`} />
+              <Reviews averageRating={5} reviewCount={1995} />
+            </HStack>
+            <Paragraph
+              value={`${document.description}`}
+              textSize="base"
+              fontWeight="normal"
+            />
+          </VStack>
+          <ProductImage
+            src={`${document.photoGallery[0].image.url}`}
+            alt="Light green backpack with black canvas straps and front zipper pouch."
+          />
+        </GridContainer>
       </Section>
-      <Section background={false}>
+      <Section background={true}>
+        <Incentives />
+      </Section>
+      <Section background={true}>
         <ProductTable
           title="Product Details"
           rockerType="All Mountain Rocker – Smooth rocker at both tip and tail with camber underfoot provides balanced performance anywhere on the mountain."
@@ -53,6 +76,7 @@ export default function Product({ document }: TemplateProps) {
           bindingCompatibility="We recommend a brake width equal to or at most 15 mm wider than the ski waist width."
         />
       </Section>
+      <RecentReviews />
       <Section background={false}>
         <ItemsGrid title="Similar Items">
           <Item
@@ -77,6 +101,7 @@ export default function Product({ document }: TemplateProps) {
           />
         </ItemsGrid>
       </Section>
+      <SkiHouseFooter />
     </>
   );
 }
