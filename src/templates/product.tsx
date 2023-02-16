@@ -19,7 +19,7 @@ export const config: TemplateConfig = {
     $id: "skis",
     filter: { entityTypes: ["ce_skis"] },
     localization: { locales: ["en"], primary: false },
-    fields: ["name", "c_price", "photoGallery", "slug"],
+    fields: ["photoGallery", "name", "c_price", "slug"],
   },
 };
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
@@ -29,17 +29,19 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
 export default function Product({ document }: TemplateProps) {
   return (
     <>
-      <VStack>
-        <Headline value={document.name} fontWeight="bold" textSize="4xl" />
-        <HStack>
-          <Label value={`$${document.c_price}`} />
-          <Reviews averageRating={5} reviewCount={1995} />
-        </HStack>
-      </VStack>
-      <ProductImage
-        src={`${document.photoGallery[0].image.url}`}
-        alt="Light green backpack with black canvas straps and front zipper pouch."
-      />
+      <Section background={false}>
+        <VStack>
+          <Headline value={document.name} fontWeight="bold" textSize="4xl" />
+          <HStack>
+            <Label value={`$${document.c_price}`} />
+            <Reviews averageRating={5} reviewCount={1995} />
+          </HStack>
+        </VStack>
+        <ProductImage
+          src={`${document.photoGallery[0].image.url}`}
+          alt="Light green backpack with black canvas straps and front zipper pouch."
+        />
+      </Section>
       <Section background={false}>
         <ProductTable
           title="Product Details"
