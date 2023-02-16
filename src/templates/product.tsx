@@ -8,9 +8,6 @@ import Item from "../components/Item";
 import ItemsGrid from "../components/ItemsGrid";
 import Label from "../components/Label";
 
-import Banner from "../components/Banner";
-import Incentives from "../components/Incentives";
-import Paragraph from "../components/Paragraph";
 import ProductImage from "../components/ProductImage";
 import ProductTable from "../components/ProductTable";
 import Reviews from "../components/Reviews";
@@ -24,7 +21,7 @@ export const config: TemplateConfig = {
     $id: "skis",
     filter: { entityTypes: ["ce_skis"] },
     localization: { locales: ["en"], primary: false },
-    fields: ["name", "c_price", "description", "photoGallery", "slug"],
+    fields: ["name", "c_price", "photoGallery", "slug"],
   },
 };
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
@@ -34,11 +31,6 @@ export const getPath: GetPath<TemplateProps> = ({ document }) => {
 export default function Product({ document }: TemplateProps) {
   return (
     <>
-      <Banner
-        text={`Free Shipping on all orders above $100`}
-        backgroundColor="#f07d56"
-        textColor="#FFFFFF"
-      />
       <SkiHomeLayout>
         <GridContainer>
           <VStack>
@@ -47,11 +39,6 @@ export default function Product({ document }: TemplateProps) {
               <Label value={`$${document.c_price}`} />
               <Reviews averageRating={5} reviewCount={1995} />
             </HStack>
-            <Paragraph
-              value={document.description}
-              fontWeight="normal"
-              textSize="base"
-            />
           </VStack>
           <ProductImage
             src={`${document.photoGallery[0].image.url}`}
@@ -92,9 +79,6 @@ export default function Product({ document }: TemplateProps) {
               price={699.99}
             />
           </ItemsGrid>
-        </Section>
-        <Section background={false}>
-          <Incentives />
         </Section>
       </SkiHomeLayout>
     </>
