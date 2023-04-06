@@ -18,8 +18,13 @@ export interface FormTextInputProps {
 
   required?: boolean;
   errorText?: string;
-  inputValidation?: "number" | "text" | "length" | "regex";
+  // TODO: Why can't I do this?
+  // inputValidation?: "email" | "url";
+  email?: boolean;
 }
+
+// email regex
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export const initialProps: FormTextInputProps = {
   inputType: "Short Answer",
@@ -41,7 +46,7 @@ const FormTextInputProps = ({
   placeholder,
   required,
   errorText,
-  inputValidation,
+  email,
 }: FormTextInputProps) => {
   const [inputValue, setInputValue] = useState("");
   const [blurred, setBlurred] = useState(false);
@@ -51,8 +56,13 @@ const FormTextInputProps = ({
   const [inputValid, setInputValid] = useState(true);
 
   useEffect(() => {
-    if (required && inputValue === "" && blurred) {
-      setInputValid(false);
+    if (blurred) {
+      if (blurred && required && inputValue === "") {
+        setInputValid(false);
+      } else if (email && !emailRegex.test(inputValue)) {
+        setInputValid(false);
+        setErrorMessage("Please enter a valid email address.");
+      }
     } else {
       setInputValid(true);
     }
