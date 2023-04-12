@@ -26,7 +26,7 @@
       "fields": [
         "name",
         "c_price",
-        "description",
+        "c_productDescription",
         "photoGallery",
         "slug"
       ]

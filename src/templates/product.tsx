@@ -23,7 +23,7 @@ export const config: TemplateConfig = {
     $id: "skis",
     filter: { entityTypes: ["ce_product"] },
     localization: { locales: ["en"], primary: false },
-    fields: ["name", "c_price", "description", "photoGallery", "slug"],
+    fields: ["name", "c_price", "c_productDescription", "photoGallery"],
   },
 };
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
@@ -52,7 +52,7 @@ export default function Product({ document }: TemplateProps) {
                   <Reviews averageRating={5} reviewCount={1995} />
                 </HStack>
                 <Paragraph
-                  value={`${document.description}`}
+                  value={`${document.c_productDescription}`}
                   fontWeight="light"
                   textSize="base"
                 />
