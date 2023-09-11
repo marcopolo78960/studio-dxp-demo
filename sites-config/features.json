@@ -27,8 +27,7 @@
         "name",
         "c_price",
         "c_productDescription",
-        "photoGallery",
-        "slug"
+        "photoGallery"
       ]
     }
   ]

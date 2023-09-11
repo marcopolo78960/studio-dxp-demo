@@ -9,6 +9,7 @@ import Item from "../components/Item";
 import ItemsGrid from "../components/ItemsGrid";
 import Label from "../components/Label";
 
+import BigButton from "../components/BigButton";
 import CenteredContainer from "../components/CenteredContainer";
 import PageLayout from "../components/PageLayout";
 import Paragraph from "../components/Paragraph";
@@ -23,7 +24,7 @@ export const config: TemplateConfig = {
     $id: "skis",
     filter: { entityTypes: ["ce_product"] },
     localization: { locales: ["en"], primary: false },
-    fields: ["name", "c_price", "c_productDescription", "photoGallery"],
+    fields: ["name", "c_price", "photoGallery"],
   },
 };
 export const getPath: GetPath<TemplateProps> = ({ document }) => {
@@ -48,19 +49,20 @@ export default function Product({ document }: TemplateProps) {
                   textSize="4xl"
                 />
                 <HStack>
+                  <Paragraph
+                    value="Paragraph"
+                    textSize="base"
+                    fontWeight="normal"
+                  />
                   <Label value={document.c_price} />
                   <Reviews averageRating={5} reviewCount={1995} />
                 </HStack>
-                <Paragraph
-                  value={`${document.c_productDescription}`}
-                  fontWeight="light"
-                  textSize="base"
-                />
               </VStack>
               <ProductImage
                 src={document.photoGallery[0].image.url}
                 alt="Light green backpack with black canvas straps and front zipper pouch."
               />
+              <BigButton title={`Call to Action`} />
             </GridContainer>
             <ItemsGrid title="Similar Items">
               <Item
